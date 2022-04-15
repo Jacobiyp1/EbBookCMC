@@ -1,5 +1,9 @@
 package com.cmc.ebshop.dto;
 
-public class BookDto {
+import lombok.Data;
 
+@Data
+public class BookDto {
+    private Integer id;
+    private String name;
 }
