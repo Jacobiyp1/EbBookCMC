@@ -1,1 +1,1 @@
-# EbBookCMC
+# EbShopCMC
