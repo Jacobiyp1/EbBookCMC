@@ -33,6 +33,7 @@ public class BookServiceImpl implements IBookService {
         }
         bookMapper.updateBook(bookDto);
     }
+<<<<<<< HEAD
 
     @Override
     public void deleteBook(String bookId) throws NotFoundException {
@@ -43,4 +44,6 @@ public class BookServiceImpl implements IBookService {
         ob.setDeleted(true);
         bookMapper.updateBook(ob);
     }
+=======
+>>>>>>> d9297e4f00894d5ce9465dd4b0ea6d514497167c
 }
