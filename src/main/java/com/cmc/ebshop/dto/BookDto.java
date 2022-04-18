@@ -13,7 +13,7 @@ public class BookDto {
     private String publisherId;
     private BigDecimal price;
     private Date publishedYear;
-    private String status;
+    private Boolean deleted;
     private BigDecimal quantityCurrent;
     private BigDecimal quantitySold;
 }

@@ -2,7 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.cmc.ebshop.mapper.IBookMapper">
     <insert id="insertBook">
-        INSERT INTO book(id, name) VALUES(#{book.id}, #{book.name});
+        INSERT INTO book(id, name, price, publishedyear, quantitycurrent, quantitysold, authorid, publisherid, deleted)
+        VALUES (
+            #{book.id},
+            #{book.name},
+            #{book.price},
+            #{book.publishedYear},
+            #{book.quantityCurrent},
+            #{book.quantitySold},
+            #{book.authorId},
+            #{book.publisherId},
+            #{book.deleted}
+        );
     </insert>
 
     <select id="existsBookById">
