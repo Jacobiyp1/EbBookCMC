@@ -4,4 +4,11 @@
     <insert id="insertBook">
         INSERT INTO book(id, name) VALUES(#{book.id}, #{book.name});
     </insert>
+
+    <select id="existsBookById">
+        SELECT EXISTS(SELECT id FROM book WHERE id = #{bookId})
+    </select>
+
+    <resultMap id="existsBookById" type="java.lang.Boolean" >
+    </resultMap>
 </mapper>

@@ -7,4 +7,5 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface IBookMapper {
     void insertBook(@Param("book")BookDto bookDto);
+    boolean existsBookById(@Param("bookId") String bookId);
 }

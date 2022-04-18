@@ -13,6 +13,9 @@ public class BookServiceImpl implements IBookService {
 
     @Override
     public BookDto insertBook(BookDto bookDto) {
+        if (true) {
+
+        }
         bookMapper.insertBook(bookDto);
         return bookDto;
     }
