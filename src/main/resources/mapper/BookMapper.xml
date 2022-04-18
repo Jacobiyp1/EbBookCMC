@@ -16,10 +16,53 @@
         );
     </insert>
 
-    <select id="existsBookById">
+    <update id="updateBook" >
+        UPDATE book
+        <set>
+            <if test="book.id != null">
+                id = #{book.id},
+            </if>
+            <if test="book.name != null">
+                name = #{book.name},
+            </if>
+            <if test="book.authorId != null">
+                authorid = #{book.authorId},
+            </if>
+            <if test="book.publisherId != null">
+                publisherid = #{book.publisherId},
+            </if>
+            <if test="book.price != null">
+                price = #{book.price},
+            </if>
+            <if test="book.publishedYear != null">
+                publishedyear = #{book.publishedYear},
+            </if>
+            <if test="book.deleted != null">
+                deleted = #{book.deleted},
+            </if>
+            <if test="book.quantityCurrent != null">
+                quantitycurrent = #{book.quantityCurrent},
+            </if>
+            <if test="book.quantitySold != null">
+                quantitySold = #{book.quantitySold},
+            </if>
+        </set>
+        WHERE id = #{book.id}
+    </update>
+
+    <select id="existsBookById" resultMap="existsBookById">
         SELECT EXISTS(SELECT id FROM book WHERE id = #{bookId})
     </select>
 
+    <select id="findById" resultMap="findById">
+        SELECT *
+        FROM book
+        WHERE id = #{bookId}
+    </select>
+
     <resultMap id="existsBookById" type="java.lang.Boolean" >
+    </resultMap>
+
+    <resultMap id="findById" type="com.cmc.ebshop.dto.BookDto" autoMapping="true">
     </resultMap>
 </mapper>

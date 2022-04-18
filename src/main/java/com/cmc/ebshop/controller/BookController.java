@@ -1,5 +1,6 @@
 package com.cmc.ebshop.controller;
 
+import com.cmc.ebshop.common.exception.NotFoundException;
 import com.cmc.ebshop.dto.BookDto;
 import com.cmc.ebshop.dto.ResponseBodyDto;
 import com.cmc.ebshop.service.IBookService;
@@ -19,5 +20,12 @@ public class BookController {
     public ResponseEntity<ResponseBodyDto> insertBook(@RequestBody BookDto bookDto) {
         ResponseBodyDto responseBodyDto = new ResponseBodyDto("Success", HttpStatus.OK.value(), bookService.insertBook(bookDto));
         return new ResponseEntity<>(responseBodyDto, HttpStatus.CREATED);
+    }
+
+    @PatchMapping
+    public ResponseEntity<ResponseBodyDto> updateBook(@RequestBody BookDto bookDto) throws NotFoundException {
+        bookService.updateBook(bookDto);
+        ResponseBodyDto responseBodyDto = new ResponseBodyDto("Success", HttpStatus.OK.value());
+        return new ResponseEntity<>(responseBodyDto, HttpStatus.OK);
     }
 }
