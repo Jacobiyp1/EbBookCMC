@@ -1,7 +1,6 @@
 package com.cmc.ebshop.dto;
 
 import lombok.Data;
-import org.springframework.http.HttpStatus;
 
 import java.util.List;
 

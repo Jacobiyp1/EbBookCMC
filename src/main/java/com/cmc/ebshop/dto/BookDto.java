@@ -14,6 +14,6 @@ public class BookDto {
     private BigDecimal price;
     private Date publishedYear;
     private Boolean deleted;
-    private BigDecimal quantityCurrent;
-    private BigDecimal quantitySold;
+    private Integer quantityCurrent;
+    private Integer quantitySold;
 }
