@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class Orders {
     private String id;
-    private Customer customer;
+    private String customerId;
     private String status ;
 }
