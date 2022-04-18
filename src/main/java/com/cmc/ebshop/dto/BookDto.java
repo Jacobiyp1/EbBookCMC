@@ -1,5 +1,19 @@
 package com.cmc.ebshop.dto;
 
-public class BookDto {
+import lombok.Data;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
+@Data
+public class BookDto {
+    private String id;
+    private String name;
+    private String authorId;
+    private String publisherId;
+    private BigDecimal price;
+    private Date publishedYear;
+    private Boolean deleted;
+    private BigDecimal quantityCurrent;
+    private BigDecimal quantitySold;
 }

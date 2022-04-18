@@ -8,11 +8,11 @@ import java.util.Date;
 public class Book {
     private String id;
     private String name;
-    private Author author;
-    private Publisher publisher;
+    private String authorId;
+    private String publisherId;
     private BigDecimal price;
     private Date publishedYear;
-    private String status;
-    private Long quantityCurrent;
-    private Long quantitySold;
+    private Boolean deleted;
+    private BigDecimal quantityCurrent;
+    private BigDecimal quantitySold;
 }
