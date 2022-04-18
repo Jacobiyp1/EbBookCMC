@@ -33,4 +33,14 @@ public class BookServiceImpl implements IBookService {
         }
         bookMapper.updateBook(bookDto);
     }
+
+    @Override
+    public void deleteBook(String bookId) throws NotFoundException {
+        BookDto ob = bookMapper.findById(bookId);
+        if (Objects.isNull(ob)) {
+            throw new NotFoundException("Not found book id " + bookId);
+        }
+        ob.setDeleted(true);
+        bookMapper.updateBook(ob);
+    }
 }

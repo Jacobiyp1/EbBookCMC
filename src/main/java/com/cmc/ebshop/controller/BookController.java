@@ -28,4 +28,10 @@ public class BookController {
         ResponseBodyDto responseBodyDto = new ResponseBodyDto("Success", HttpStatus.OK.value());
         return new ResponseEntity<>(responseBodyDto, HttpStatus.OK);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ResponseBodyDto> deleteBook(@PathVariable("id") String bookId) throws NotFoundException {
+        bookService.deleteBook(bookId);
+        return new ResponseEntity<>(new ResponseBodyDto("Delete Success", HttpStatus.OK.value()), HttpStatus.OK);
+    }
 }

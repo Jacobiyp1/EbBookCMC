@@ -6,4 +6,5 @@ import com.cmc.ebshop.dto.BookDto;
 public interface IBookService {
     BookDto insertBook(BookDto bookDto);
     void updateBook(BookDto bookDto) throws NotFoundException;
+    void deleteBook(String bookId) throws NotFoundException;
 }
