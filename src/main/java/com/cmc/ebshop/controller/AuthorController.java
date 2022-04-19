@@ -38,7 +38,7 @@ public class AuthorController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ResponseBodyDto> getAuthor(@PathVariable String authorId) throws CannotDeleteException, NotFoundException {
+    public ResponseEntity<ResponseBodyDto> getAuthor(@PathVariable("id") String authorId) throws NotFoundException {
         ResponseBodyDto responseBodyDto = new ResponseBodyDto("Success", HttpStatus.OK.value(), authorService.getAuthor(authorId));
         return new ResponseEntity<>(responseBodyDto, HttpStatus.OK);
     }
