@@ -2,11 +2,13 @@ package com.cmc.ebshop.service.impl;
 
 import com.cmc.ebshop.common.exception.NotFoundException;
 import com.cmc.ebshop.dto.BookDto;
+import com.cmc.ebshop.dto.request.BookSearchRequest;
 import com.cmc.ebshop.mapper.IBookMapper;
 import com.cmc.ebshop.service.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -33,7 +35,6 @@ public class BookServiceImpl implements IBookService {
         }
         bookMapper.updateBook(bookDto);
     }
-<<<<<<< HEAD
 
     @Override
     public void deleteBook(String bookId) throws NotFoundException {
@@ -44,6 +45,10 @@ public class BookServiceImpl implements IBookService {
         ob.setDeleted(true);
         bookMapper.updateBook(ob);
     }
-=======
->>>>>>> d9297e4f00894d5ce9465dd4b0ea6d514497167c
+
+    @Override
+    public List<BookDto> getBooks(Integer pageIndex, Integer pageSize, BookSearchRequest request) {
+        Integer offset = (pageIndex - 1) * pageSize;
+        return bookMapper.getBooks(request, offset < 0 ? 0 : offset, pageSize);
+    }
 }

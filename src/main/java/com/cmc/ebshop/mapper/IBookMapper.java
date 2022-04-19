@@ -1,6 +1,7 @@
 package com.cmc.ebshop.mapper;
 
 import com.cmc.ebshop.dto.BookDto;
+import com.cmc.ebshop.dto.request.BookSearchRequest;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,5 +13,5 @@ public interface IBookMapper {
     void updateBook(@Param("book") BookDto bookDto);
     boolean existsBookById(@Param("bookId") String bookId);
     BookDto findById(@Param("bookId") String bookId);
-    List<BookDto> filterBook();
+    List<BookDto> getBooks(@Param("request") BookSearchRequest request, @Param("offset") Integer offset, @Param("size") Integer size);
 }

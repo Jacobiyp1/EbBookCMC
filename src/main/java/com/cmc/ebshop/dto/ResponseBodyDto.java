@@ -24,4 +24,10 @@ public class ResponseBodyDto<E> {
         this.code = code;
         this.item = item;
     }
+
+    public ResponseBodyDto(String message, Integer code, List<E> items) {
+        this.message = message;
+        this.code = code;
+        this.items = items;
+    }
 }
