@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmc.ebshop.mapper.IOrderDetailMapper">
+    <insert id="createOrderDetail">
+        insert into order_detail (id, price, quantity, bookid, orderid) values
+        <foreach collection="orderDetails" item="orderDetail" index="index" open="(" separator="),("  close=")">
+            #{orderDetail.id},
+            #{orderDetail.price},
+            #{orderDetail.quantity},
+            #{orderDetail.bookId},
+            #{orderDetail.orderId}
+        </foreach>
+    </insert>
+</mapper>

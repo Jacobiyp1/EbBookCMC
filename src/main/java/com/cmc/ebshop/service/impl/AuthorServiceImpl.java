@@ -3,7 +3,7 @@ package com.cmc.ebshop.service.impl;
 import com.cmc.ebshop.common.exception.CannotDeleteException;
 import com.cmc.ebshop.common.exception.NotFoundException;
 import com.cmc.ebshop.dto.response.author.AuthorInfoDto;
-import com.cmc.ebshop.dto.request.AuthorParam;
+import com.cmc.ebshop.dto.request.author.AuthorRequest;
 import com.cmc.ebshop.dto.response.author.AuthorDto;
 import com.cmc.ebshop.mapper.IAuthorMapper;
 import com.cmc.ebshop.service.IAuthorService;
@@ -17,8 +17,8 @@ public class AuthorServiceImpl implements IAuthorService {
     IAuthorMapper authorMapper;
 
     @Override
-    public AuthorDto insertAuthor(AuthorParam authorParam) {
-        AuthorDto authorDto = new AuthorDto(authorParam.getName());
+    public AuthorDto insertAuthor(AuthorRequest authorRequest) {
+        AuthorDto authorDto = new AuthorDto(authorRequest.getName());
         authorMapper.insertAuthor(authorDto);
         return authorDto;
     }
@@ -47,14 +47,13 @@ public class AuthorServiceImpl implements IAuthorService {
     @Override
     public AuthorInfoDto getAuthor(String authorId) throws NotFoundException {
         if (authorMapper.isExistsAuthor(authorId)) {
-            AuthorInfoDto authorInfoDto =
-                    new AuthorInfoDto(authorMapper.getAuthor(authorId), authorMapper.getNumberOfBookBelongToAuthor(authorId), authorMapper.top3BestSale(authorId));
+            AuthorInfoDto authorInfoDto = new AuthorInfoDto(authorMapper.getAuthor(authorId),
+                    authorMapper.getNumberOfBookBelongToAuthor(authorId), authorMapper.top3BestSale(authorId));
             return authorInfoDto;
         } else {
             throw new NotFoundException("Author did not exists");
         }
     }
-
 
     @Override
     public boolean isExistsAuthor(String id) {
