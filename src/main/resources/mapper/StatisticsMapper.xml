@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmc.ebshop.mapper.IStatisticsMapper">
+    <select id="getInvoice" resultMap="getInvoice">
+        SELECT  c."name" as nameCustomer, c.email, c.phone, b."name" as nameBook, a."name" as nameAuthor,
+                p."name" as namePublisher, b.price as priceBook, od.quantity, od.price as totalPrice
+        FROM order_detail od
+        LEFT JOIN orders o ON o.id = od.orderid
+        INNER JOIN customer c ON c.id = o.customerid
+        LEFT JOIN book b ON b.id = od.bookid
+        LEFT JOIN author a ON a.id = b.authorid
+        LEFT JOIN publisher p ON p.id = b.publisherid
+        <where>
+            <if test="orderId != null">
+                o.id = #{orderId}
+            </if>
+        </where>
+    </select>
+
+    <resultMap id="getInvoice" type="com.cmc.ebshop.dto.response.invoice.InvoiceResponse">
+        <id property="emailCustomer" column="email"></id>
+        <result property="nameCustomer" column="namecustomer" />
+        <result property="phoneCustomer" column="phone" />
+        <collection property="bookOrders" ofType="com.cmc.ebshop.dto.response.invoice.BookOrder">
+            <result column="namebook" property="nameBook" />
+            <result column="nameauthor" property="nameAuthor" />
+            <result column="namepublisher" property="namePublisher" />
+            <result column="pricebook" property="price" />
+            <result column="quantity" property="quantityPurchased" />
+        </collection>
+    </resultMap>
+</mapper>
