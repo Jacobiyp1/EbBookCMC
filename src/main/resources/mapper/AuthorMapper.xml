@@ -30,7 +30,7 @@
     </select>
 
     <resultMap id="Author" type="com.cmc.ebshop.entity.Author">
-        <result property="id" column="id"/>
+        <id property="id" column="id"/>
         <result property="name" column="name"/>
     </resultMap>
 
@@ -46,6 +46,13 @@
         SELECT COUNT(*) FROM book WHERE authorid = #{id}
     </select>
 
+    <select id="top3BestSale" resultMap="getBooks">
+        SELECT b.id, b."name", b.price, b.publishedyear, b.quantitycurrent, b.quantitysold, b.deleted, b.authorid, b.publisherid FROM book b JOIN author a ON b.authorid = a.id WHERE a.id = #{id}
+        ORDER BY quantitysold DESC OFFSET 0 LIMIT 3
+    </select>
+
+    <resultMap id="getBooks" type="com.cmc.ebshop.dto.BookDto" autoMapping="true">
+    </resultMap>
 
 
 </mapper>
