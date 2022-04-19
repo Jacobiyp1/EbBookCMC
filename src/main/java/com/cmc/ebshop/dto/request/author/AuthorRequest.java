@@ -1,4 +1,4 @@
-package com.cmc.ebshop.dto.request;
+package com.cmc.ebshop.dto.request.author;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @EqualsAndHashCode
 public
-class AuthorParam {
+class AuthorRequest {
 
     @NotBlank(message = "can't be empty")
     private String name;

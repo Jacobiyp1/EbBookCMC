@@ -1,4 +1,4 @@
-package com.cmc.ebshop.dto.request;
+package com.cmc.ebshop.dto.request.book;
 
 import lombok.Data;
 

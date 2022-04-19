@@ -1,7 +1,7 @@
 package com.cmc.ebshop.mapper;
 
 import com.cmc.ebshop.dto.response.book.BookDto;
-import com.cmc.ebshop.dto.request.BookSearchRequest;
+import com.cmc.ebshop.dto.request.book.BookSearchRequest;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

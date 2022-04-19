@@ -2,7 +2,7 @@ package com.cmc.ebshop.service.impl;
 
 import com.cmc.ebshop.common.exception.NotFoundException;
 import com.cmc.ebshop.dto.response.book.BookDto;
-import com.cmc.ebshop.dto.request.BookSearchRequest;
+import com.cmc.ebshop.dto.request.book.BookSearchRequest;
 import com.cmc.ebshop.mapper.IBookMapper;
 import com.cmc.ebshop.service.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
