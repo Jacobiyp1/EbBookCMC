@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmc.ebshop.mapper.ICustomerMapper">
+    <insert id="insertCustomer">
+        INSERT INTO customer(id, address, email, name, phone)
+        VALUES (
+        #{customer.id},
+        #{customer.address},
+        #{customer.email},
+        #{customer.name},
+        #{customer.phone}
+        );
+    </insert>
+
+    <select id="findByEmail" resultMap="Customer">
+        SELECT * FROM customer where email = #{email}
+    </select>
+
+    <resultMap id="Customer" type="com.cmc.ebshop.dto.response.customer.CustomerDto" autoMapping="true">
+    </resultMap>
+
+    <select id="isExistsCustomer" resultType="java.lang.Boolean">
+        SELECT EXISTS(SELECT FROM customer WHERE email = #{email})
+    </select>
+
+
+</mapper>

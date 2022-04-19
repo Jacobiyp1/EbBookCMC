@@ -5,10 +5,10 @@ import com.cmc.ebshop.common.exception.CannotDeleteException;
 import com.cmc.ebshop.common.exception.NotFoundException;
 import com.cmc.ebshop.dto.response.author.AuthorDto;
 import com.cmc.ebshop.dto.response.author.AuthorInfoDto;
-import com.cmc.ebshop.dto.request.AuthorParam;
+import com.cmc.ebshop.dto.request.author.AuthorRequest;
 
 public interface IAuthorService {
-    AuthorDto insertAuthor(AuthorParam authorParam);
+    AuthorDto insertAuthor(AuthorRequest authorRequest);
 
     AuthorDto updateAuthor(AuthorDto authorDto) throws NotFoundException;
 
