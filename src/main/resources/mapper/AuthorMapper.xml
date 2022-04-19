@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmc.ebshop.mapper.IAuthorMapper">
+    <insert id="insertAuthor">
+        INSERT INTO author(id, name)
+        VALUES (
+        #{author.id},
+        #{author.name}
+        );
+    </insert>
+
+    <update id="updateAuthor">
+        UPDATE author
+        SET
+        name = #{author.name}
+        WHERE id = #{author.id}
+    </update>
+
+    <delete id="deleteAuthor">
+        DELETE FROM author
+        WHERE id = #{author.id}
+    </delete>
+
+    <select id="isExistsAuthor" resultType="java.lang.Boolean">
+        SELECT EXISTS(SELECT FROM author WHERE id = #{id})
+    </select>
+
+    <select id="isExistsBooksOfAuthor" resultType="java.lang.Boolean">
+        SELECT EXISTS(SELECT FROM book WHERE authorid = #{id} AND deleted = false)
+    </select>
+
+    <resultMap id="Author" type="com.cmc.ebshop.entity.Author">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+
+    <select id="getAuthor" resultMap="Author">
+        SELECT
+        id,
+        name
+        FROM author
+        WHERE id = #{id}
+    </select>
+
+    <select id="getNumberOfBookBelongToAuthor" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM book WHERE authorid = #{id}
+    </select>
+
+
+
+</mapper>
