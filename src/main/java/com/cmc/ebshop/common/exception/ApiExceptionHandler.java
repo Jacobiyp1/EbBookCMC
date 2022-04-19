@@ -34,7 +34,7 @@ public class ApiExceptionHandler {
         dtoResult.setMessage(ex.getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).headers(headers).body(dtoResult);
     }
-
+  
 //    @ExceptionHandler(Exception.class)
 //    public @ResponseBody
 //    ResponseEntity<ResponseBodyDto> handleError(Exception ex, WebRequest request) {

@@ -1,7 +1,6 @@
 package com.cmc.ebshop.dto;
 
 import lombok.Data;
-import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
@@ -24,5 +23,11 @@ public class ResponseBodyDto<E> {
         this.message = message;
         this.code = code;
         this.item = item;
+    }
+
+    public ResponseBodyDto(String message, Integer code, List<E> items) {
+        this.message = message;
+        this.code = code;
+        this.items = items;
     }
 }
