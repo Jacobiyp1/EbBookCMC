@@ -1,4 +1,4 @@
-package com.cmc.ebshop.dto.param;
+package com.cmc.ebshop.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

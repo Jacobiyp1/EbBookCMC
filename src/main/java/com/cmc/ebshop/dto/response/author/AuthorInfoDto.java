@@ -1,6 +1,6 @@
-package com.cmc.ebshop.dto.Author;
+package com.cmc.ebshop.dto.response.author;
 
-import com.cmc.ebshop.dto.BookDto;
+import com.cmc.ebshop.dto.response.book.BookDto;
 import com.cmc.ebshop.entity.Author;
 import lombok.AllArgsConstructor;
 import lombok.Data;

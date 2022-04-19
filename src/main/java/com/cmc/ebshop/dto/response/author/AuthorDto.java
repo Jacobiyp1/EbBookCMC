@@ -1,6 +1,5 @@
-package com.cmc.ebshop.dto.Author;
+package com.cmc.ebshop.dto.response.author;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

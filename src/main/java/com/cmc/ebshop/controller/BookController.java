@@ -1,7 +1,7 @@
 package com.cmc.ebshop.controller;
 
 import com.cmc.ebshop.common.exception.NotFoundException;
-import com.cmc.ebshop.dto.BookDto;
+import com.cmc.ebshop.dto.response.book.BookDto;
 import com.cmc.ebshop.dto.ResponseBodyDto;
 import com.cmc.ebshop.dto.request.BookSearchRequest;
 import com.cmc.ebshop.service.IBookService;

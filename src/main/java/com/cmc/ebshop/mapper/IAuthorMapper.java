@@ -1,7 +1,7 @@
 package com.cmc.ebshop.mapper;
 
-import com.cmc.ebshop.dto.Author.AuthorDto;
-import com.cmc.ebshop.dto.BookDto;
+import com.cmc.ebshop.dto.response.author.AuthorDto;
+import com.cmc.ebshop.dto.response.book.BookDto;
 import com.cmc.ebshop.entity.Author;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

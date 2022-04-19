@@ -3,9 +3,9 @@ package com.cmc.ebshop.service;
 
 import com.cmc.ebshop.common.exception.CannotDeleteException;
 import com.cmc.ebshop.common.exception.NotFoundException;
-import com.cmc.ebshop.dto.Author.AuthorDto;
-import com.cmc.ebshop.dto.Author.AuthorInfoDto;
-import com.cmc.ebshop.dto.param.AuthorParam;
+import com.cmc.ebshop.dto.response.author.AuthorDto;
+import com.cmc.ebshop.dto.response.author.AuthorInfoDto;
+import com.cmc.ebshop.dto.request.AuthorParam;
 
 public interface IAuthorService {
     AuthorDto insertAuthor(AuthorParam authorParam);

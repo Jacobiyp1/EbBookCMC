@@ -51,7 +51,7 @@
         ORDER BY quantitysold DESC OFFSET 0 LIMIT 3
     </select>
 
-    <resultMap id="getBooks" type="com.cmc.ebshop.dto.BookDto" autoMapping="true">
+    <resultMap id="getBooks" type="com.cmc.ebshop.dto.response.book.BookDto" autoMapping="true">
     </resultMap>
 
 
