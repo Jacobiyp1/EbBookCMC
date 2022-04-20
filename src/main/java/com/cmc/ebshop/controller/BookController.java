@@ -5,6 +5,9 @@ import com.cmc.ebshop.dto.response.book.BookDto;
 import com.cmc.ebshop.dto.ResponseBodyDto;
 import com.cmc.ebshop.dto.request.book.BookSearchRequest;
 import com.cmc.ebshop.service.IBookService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,13 +15,15 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/book")
+@Api(value = "Book Api")
 public class BookController {
 
     @Autowired
     private IBookService bookService;
 
+    @ApiOperation(value = "Thêm sách")
     @PostMapping
-    public ResponseEntity<ResponseBodyDto<BookDto>> insertBook(@RequestBody BookDto bookDto) {
+    public ResponseEntity<ResponseBodyDto<BookDto>> insertBook(@ApiParam(value = "Thêm sách") @RequestBody BookDto bookDto) {
         ResponseBodyDto<BookDto> responseBodyDto = new ResponseBodyDto("Success", HttpStatus.OK.value(), bookService.insertBook(bookDto));
         return new ResponseEntity<>(responseBodyDto, HttpStatus.CREATED);
     }
