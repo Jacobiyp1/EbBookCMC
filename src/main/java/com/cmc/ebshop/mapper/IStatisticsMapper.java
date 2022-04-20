@@ -1,10 +1,19 @@
 package com.cmc.ebshop.mapper;
 
-import com.cmc.ebshop.dto.response.invoice.InvoiceResponse;
+import com.cmc.ebshop.dto.response.statistics.*;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 @Mapper
 public interface IStatisticsMapper {
-    InvoiceResponse getInvoice(@Param("orderId") String orderId);
+    List<TopTenSellingBooks> getTopTenSellingBooks();
+
+    List<TopFiveAuthorSellingBooks> getTopFiveAuthorSellingBooks();
+
+    List<TopFivePublisherSellingBooks> getTopFivePublisherSellingBooks();
+
+    List<TopFiveCustomerBuyBooks> getTopFiveCustomerBuyBooks();
+
+    List<TopFiveCustomerHighestInvoiceValue> getTopFiveCustomerHighestInvoiceValue();
 }
