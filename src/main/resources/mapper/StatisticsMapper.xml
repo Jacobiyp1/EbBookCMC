@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cmc.ebshop.mapper.IStatisticsMapper">
+    <select id="getTopTenSellingBooks" resultMap="getTopTenSellingBooks">
+        SELECT b."name" as nameBook , a."name" as nameAuthor, p."name" as namePublisher, b.quantitysold AS quantitySold
+        FROM book b
+        LEFT JOIN author a ON a.id = b.authorid
+        LEFT JOIN publisher p ON p.id = b.publisherid
+        WHERE b.deleted IS NOT TRUE
+        ORDER BY b.quantitysold DESC NULLS LAST
+        LIMIT 10 OFFSET 0
+    </select>
+
+    <resultMap id="getTopTenSellingBooks" type="com.cmc.ebshop.dto.response.statistics.TopTenSellingBooks" autoMapping="true">
+    </resultMap>
+</mapper>
