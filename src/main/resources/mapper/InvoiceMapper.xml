@@ -3,7 +3,7 @@
 <mapper namespace="com.cmc.ebshop.mapper.IInvoiceMapper">
     <select id="getInvoice" resultMap="getInvoice">
         SELECT  c."name" as nameCustomer, c.email, c.phone, b."name" as nameBook, a."name" as nameAuthor,
-                p."name" as namePublisher, b.price as priceBook, od.quantity, od.price as totalPrice
+        p."name" as namePublisher, b.price as priceBook, od.quantity, od.price as totalPrice
         FROM order_detail od
         LEFT JOIN orders o ON o.id = od.orderid
         INNER JOIN customer c ON c.id = o.customerid
