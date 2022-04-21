@@ -1,5 +1,6 @@
 package com.cmc.ebshop.controller;
 
+import com.cmc.ebshop.common.exception.NotFoundException;
 import com.cmc.ebshop.dto.ResponseBodyDto;
 import com.cmc.ebshop.dto.request.order.OrderRequest;
 import com.cmc.ebshop.service.IOrderService;
@@ -19,7 +20,7 @@ public class OrderController {
     IOrderService orderService;
 
     @PostMapping()
-    public ResponseEntity<ResponseBodyDto> createOrder(@RequestBody OrderRequest orderRequest) {
+    public ResponseEntity<ResponseBodyDto> createOrder(@RequestBody OrderRequest orderRequest) throws NotFoundException {
         ResponseBodyDto responseBodyDto = new ResponseBodyDto("Success", HttpStatus.OK.value(), orderService.createOrder(orderRequest));
         return new ResponseEntity<>(responseBodyDto, HttpStatus.CREATED);
     }
