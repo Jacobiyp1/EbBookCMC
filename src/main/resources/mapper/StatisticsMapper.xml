@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.cmc.ebshop.mapper.IStatisticsMapper">
     <select id="getTopTenSellingBooks" resultMap="getTopTenSellingBooks">
-        SELECT b."name" as nameBook , a."name" as nameAuthor, p."name" as namePublisher, b.quantitysold AS quantitySold
+        SELECT b."name" AS nameBook , a."name" AS nameAuthor, p."name" AS namePublisher, b.quantitysold AS quantitySold
         FROM book b
         LEFT JOIN author a ON a.id = b.authorid
         LEFT JOIN publisher p ON p.id = b.publisherid
@@ -11,6 +11,64 @@
         LIMIT 10 OFFSET 0
     </select>
 
+    <select id="getTopFiveAuthorSellingBooks" resultMap="getTopFiveAuthorSellingBooks">
+        SELECT a."name" AS nameAuthor , b.totalsold AS quantitySold
+        from author a
+        RIGHT JOIN
+        (
+            SELECT authorid , SUM(quantitysold) as totalsold
+            FROM book b
+            GROUP BY authorid
+        ) AS b ON b.authorid = a.id
+        ORDER BY b.totalsold desc nulls last
+        LIMIT 5 OFFSET 0
+    </select>
+
+    <select id="getTopFivePublisherSellingBooks" resultMap="getTopFivePublisherSellingBooks">
+        SELECT p."name" AS namePublisher, b.totalsold AS quantitySold
+        FROM publisher p
+        RIGHT JOIN
+        (
+            SELECT publisherid , SUM(quantitysold) AS totalsold
+            FROM book b
+            GROUP BY publisherid
+        ) AS b ON b.publisherid = p.id
+        ORDER BY b.totalsold desc nulls last
+        LIMIT 5 OFFSET 0
+    </select>
+
+    <select id="getTopFiveCustomerBuyBooks" resultMap="getTopFiveCustomerBuyBooks">
+        SELECT c."name" AS nameCustomer, c.email , c.address ,c.phone , sum(quantity) AS totalQuantity, sum(price) AS totalPrice
+        FROM order_detail od
+        LEFT JOIN orders o ON o.id = od.orderid
+        LEFT JOIN customer c ON c.id = o.customerid
+        GROUP BY c."name", c.email , c.address ,c.phone
+        ORDER BY totalQuantity DESC
+        LIMIT 5 OFFSET 0
+    </select>
+
+    <select id="getTopFiveCustomerHighestInvoiceValue" resultMap="getTopFiveCustomerHighestInvoiceValue">
+        SELECT c."name" AS nameCustomer, c.email , c.address ,c.phone , sum(quantity) AS totalQuantity, sum(price) AS totalPrice
+        FROM order_detail od
+        LEFT JOIN orders o ON o.id = od.orderid
+        LEFT JOIN customer c ON c.id = o.customerid
+        GROUP BY c."name", c.email , c.address ,c.phone
+        ORDER BY totalPrice DESC
+        LIMIT 5 OFFSET 0
+    </select>
+
     <resultMap id="getTopTenSellingBooks" type="com.cmc.ebshop.dto.response.statistics.TopTenSellingBooks" autoMapping="true">
+    </resultMap>
+
+    <resultMap id="getTopFiveAuthorSellingBooks" type="com.cmc.ebshop.dto.response.statistics.TopFiveAuthorSellingBooks" autoMapping="true">
+    </resultMap>
+
+    <resultMap id="getTopFivePublisherSellingBooks" type="com.cmc.ebshop.dto.response.statistics.TopFivePublisherSellingBooks" autoMapping="true">
+    </resultMap>
+
+    <resultMap id="getTopFiveCustomerBuyBooks" type="com.cmc.ebshop.dto.response.statistics.TopFiveCustomerBuyBooks" autoMapping="true">
+    </resultMap>
+
+    <resultMap id="getTopFiveCustomerHighestInvoiceValue" type="com.cmc.ebshop.dto.response.statistics.TopFiveCustomerHighestInvoiceValue" autoMapping="true">
     </resultMap>
 </mapper>
